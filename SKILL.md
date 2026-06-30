@@ -1,5 +1,6 @@
 ---
 name: academic-figure-engineer
+version: 1.0.0
 description: >
   Analyze academic papers, method sections, code, equations, or rough research notes and turn them into publication-quality academic architecture diagrams using editable SVG. Use for model architecture figures, research framework diagrams, prediction-optimization-control pipelines, multi-timescale systems, traffic-energy coupling diagrams, algorithm workflows, graphical abstracts, and experiment framework figures. The skill must prioritize scientific correctness, readable information hierarchy, and editable vector output rather than decorative visuals.
 ---
@@ -20,6 +21,8 @@ The primary output is an editable `.svg` file. When useful, also provide:
 - a short explanation of the visual logic;
 - export-ready PDF or PNG versions when the environment supports conversion.
 
+Default output directory: create or use `outputs/academic_figures/` inside the active project unless the user specifies another path. Keep generated SVG, HTML preview, figure specification, and derived exports together.
+
 ## Core principles
 
 1. Scientific correctness is more important than visual attractiveness.
@@ -32,6 +35,7 @@ The primary output is an editable `.svg` file. When useful, also provide:
 8. Avoid generic AI-style decoration, excessive gradients, floating shapes, and meaningless icons.
 9. The figure must remain understandable when reduced to single-column or double-column paper width.
 10. Use colors only to encode meaning, not decoration.
+11. Do not inspect unrelated personal files, memory files, credentials, browser sessions, or project files not provided or clearly required for the figure task.
 
 ## Supported inputs
 
@@ -77,7 +81,7 @@ If the requested figure tries to answer several unrelated questions, split it in
 
 ### Step 2: Classify the figure type
 
-Choose one primary figure type from `references/figure-types.md`.
+Choose one primary figure type from `references/figure-types.md`. Use `references/journal-style-presets.md` when the user specifies a target venue or when a default journal style is needed.
 
 Common types include:
 
@@ -210,7 +214,7 @@ All primary text must remain real SVG text unless exact font embedding is explic
 
 ### Step 8: Validate the diagram
 
-Perform a scientific and visual audit before delivery.
+Perform a scientific and visual audit before delivery. Use `references/final-quality-checklist.md` as the final gate before claiming publication readiness.
 
 Scientific audit:
 
@@ -234,6 +238,8 @@ Visual audit:
 - Is the figure still readable at approximately 85 mm width for single-column or 175 mm width for double-column use?
 
 ### Step 9: Deliver outputs
+
+For bilingual Chinese-English projects, follow `references/bilingual-labeling.md` and keep terminology consistent across labels and captions.
 
 When file generation is available, provide:
 
@@ -325,9 +331,10 @@ When asked to create a figure:
 1. analyze the supplied material;
 2. state the central message of the figure;
 3. produce the figure specification;
-4. generate the SVG;
-5. inspect and revise the result;
-6. provide the final files and caption.
+4. choose a figure type and journal style preset when relevant;
+5. generate the SVG in `outputs/academic_figures/` unless another path is requested;
+6. inspect and revise the result using the final quality checklist;
+7. provide the final files, caption, and unresolved assumptions.
 
 When asked only for a design plan, stop after the specification and layout proposal.
 
