@@ -1,0 +1,63 @@
+figure:
+  title: ""
+  purpose: ""
+  central_message: ""
+  audience: "journal readers"
+  type: "model_architecture"
+  target_format: "double-column"
+  orientation: "left-to-right"
+
+source_evidence:
+  manuscript_sections: []
+  equations: []
+  algorithms: []
+  code_files: []
+  unresolved_conflicts: []
+
+panels:
+  - id: "panel-a"
+    label: "(a)"
+    purpose: ""
+    zones: []
+
+nodes:
+  - id: "input-1"
+    panel: "panel-a"
+    label: ""
+    type: "data"
+    level: "module"
+    description: ""
+    shape: ""
+    innovation: false
+    training_only: false
+    inference_only: false
+
+edges:
+  - from: "input-1"
+    to: "module-1"
+    meaning: "data flow"
+    label: ""
+    style: "solid"
+
+visual_encoding:
+  proposed_method: "primary accent fill and stronger border"
+  existing_components: "neutral fill"
+  feedback: "dashed arrow"
+  output: "secondary accent fill"
+
+annotations:
+  equations: []
+  tensor_shapes: []
+  callouts: []
+
+legend:
+  required: false
+  items: []
+
+caption:
+  draft: ""
+
+validation:
+  scientific_checks: []
+  visual_checks: []
+  unresolved_items: []
