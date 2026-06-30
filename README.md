@@ -88,6 +88,21 @@ Example:
 cp -R academic-figure-engineer "$HOME/Library/Application Support/LobsterAI/SKILLs/"
 ```
 
+
+## Author and license
+
+Created and maintained by **w0001111**.
+
+Repository:
+
+```text
+https://github.com/w0001111/academic-figure-engineer
+```
+
+Copyright (c) 2026 w0001111.
+
+Released under the MIT License. If you use, adapt, or redistribute this skill, please retain the original copyright notice, license text, and attribution to this repository.
+
 ## Safety profile
 
 This skill is text-only. It does not require network access, credentials, package installation, or system-level permissions. It should only read files provided by the user or clearly required for the requested figure task.
