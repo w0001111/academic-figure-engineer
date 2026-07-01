@@ -1,0 +1,277 @@
+figure:
+  title: "Evidence-traceable AlphaFold architecture reconstruction"
+  purpose: "Demonstrate how a high-impact Nature method can be reconstructed as an original editable SVG with explicit evidence for nodes and edges."
+  central_message: "AlphaFold combines sequence, evolutionary, template, and pairwise representations through Evoformer reasoning and iterative refinement to predict 3D protein structure and confidence estimates."
+  audience: "journal readers and method reviewers"
+  type: "model_architecture"
+  target_format: "double-column"
+  orientation: "left-to-right"
+  style_preset: "Nature / Science style"
+
+source_evidence:
+  manuscript_sections:
+    - "Jumper et al. 2021, Nature article title and public method description"
+  equations: []
+  algorithms: []
+  code_files: []
+  notes:
+    - "This example uses a high-level public summary and does not reproduce any original paper figure."
+  unresolved_conflicts: []
+
+panels:
+  - id: "panel-inputs"
+    label: "Inputs"
+    purpose: "Represent public high-level input sources used by AlphaFold."
+    zones: ["sequence", "evolutionary information", "template information"]
+  - id: "panel-representation"
+    label: "Representation learning"
+    purpose: "Show learned MSA and pair representations and Evoformer reasoning."
+    zones: ["MSA representation", "pair representation", "Evoformer"]
+  - id: "panel-structure"
+    label: "Structure prediction"
+    purpose: "Show iterative refinement, structure generation, and confidence outputs."
+    zones: ["recycling", "structure module", "outputs"]
+
+nodes:
+  - id: "sequence"
+    panel: "panel-inputs"
+    label: "Amino acid\nsequence"
+    type: "data"
+    level: "module"
+    description: "Primary protein sequence input."
+    shape: "data_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "Jumper et al. 2021 describes protein structure prediction from amino acid sequence."
+      confidence: "high"
+  - id: "msa"
+    panel: "panel-inputs"
+    label: "Multiple sequence\nalignment"
+    type: "data"
+    level: "module"
+    description: "Evolutionary information represented through MSA-derived features."
+    shape: "data_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "AlphaFold public method description includes multiple sequence alignment information."
+      confidence: "high"
+  - id: "templates"
+    panel: "panel-inputs"
+    label: "Structural\ntemplates"
+    type: "data"
+    level: "module"
+    description: "Template information when available."
+    shape: "data_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "AlphaFold public method description includes structural templates."
+      confidence: "high"
+  - id: "representations"
+    panel: "panel-representation"
+    label: "MSA + pair\nrepresentations"
+    type: "latent_representation"
+    level: "major_stage"
+    description: "Learned representations carrying evolutionary and pairwise geometric information."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "AlphaFold architecture uses MSA and pair representations."
+      confidence: "high"
+  - id: "evoformer"
+    panel: "panel-representation"
+    label: "Evoformer\nreasoning block"
+    type: "model_module"
+    level: "major_stage"
+    description: "Core representation learning block exchanging information between MSA and pair representations."
+    shape: "highlight_block"
+    innovation: true
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "Jumper et al. 2021 describes the Evoformer architecture for representation learning."
+      confidence: "high"
+  - id: "recycling"
+    panel: "panel-structure"
+    label: "Recycling /\niterative refinement"
+    type: "model_process"
+    level: "module"
+    description: "Iterative refinement of representations and structure predictions."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "AlphaFold public method description includes recycling / iterative refinement."
+      confidence: "high"
+  - id: "structure-module"
+    panel: "panel-structure"
+    label: "Structure\nmodule"
+    type: "model_module"
+    level: "major_stage"
+    description: "Predicts 3D atomic coordinates from learned representations."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "AlphaFold method description includes a structure module for coordinate prediction."
+      confidence: "high"
+  - id: "coordinates"
+    panel: "panel-structure"
+    label: "Predicted 3D\nstructure"
+    type: "output"
+    level: "major_stage"
+    description: "Final predicted protein structure."
+    shape: "output_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "The paper reports highly accurate protein structure prediction."
+      confidence: "high"
+  - id: "confidence"
+    panel: "panel-structure"
+    label: "Confidence\nestimates"
+    type: "output"
+    level: "module"
+    description: "Prediction confidence outputs such as local and aligned error estimates."
+    shape: "output_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence:
+      source_type: "paper"
+      source_ref: "AlphaFold public outputs include confidence estimates such as pLDDT / aligned error measures."
+      confidence: "high"
+
+edges:
+  - from: "sequence"
+    to: "representations"
+    meaning: "sequence feature input"
+    label: "sequence features"
+    style: "solid"
+    evidence:
+      source_type: "paper"
+      source_ref: "Protein sequence is the primary input to AlphaFold."
+      confidence: "high"
+  - from: "msa"
+    to: "representations"
+    meaning: "evolutionary feature input"
+    label: "MSA features"
+    style: "solid"
+    evidence:
+      source_type: "paper"
+      source_ref: "MSA-derived information is used by AlphaFold."
+      confidence: "high"
+  - from: "templates"
+    to: "representations"
+    meaning: "template feature input"
+    label: "template features"
+    style: "solid"
+    evidence:
+      source_type: "paper"
+      source_ref: "Template information is part of the public AlphaFold method description."
+      confidence: "high"
+  - from: "representations"
+    to: "evoformer"
+    meaning: "representation learning input"
+    label: "MSA / pair states"
+    style: "solid"
+    evidence:
+      source_type: "paper"
+      source_ref: "Evoformer operates on learned MSA and pair representations."
+      confidence: "high"
+  - from: "evoformer"
+    to: "recycling"
+    meaning: "iterative refinement state"
+    label: "refined states"
+    style: "solid"
+    evidence:
+      source_type: "paper"
+      source_ref: "AlphaFold uses recycling / iterative refinement after representation learning."
+      confidence: "high"
+  - from: "recycling"
+    to: "evoformer"
+    meaning: "feedback refinement"
+    label: "recycled update"
+    style: "dashed"
+    evidence:
+      source_type: "paper"
+      source_ref: "Recycling implies iterative feedback of previous predictions or representations."
+      confidence: "medium"
+  - from: "recycling"
+    to: "structure-module"
+    meaning: "structure prediction input"
+    label: "final representation"
+    style: "solid"
+    evidence:
+      source_type: "paper"
+      source_ref: "Refined representations are used for coordinate prediction."
+      confidence: "high"
+  - from: "structure-module"
+    to: "coordinates"
+    meaning: "coordinate prediction"
+    label: "3D coordinates"
+    style: "solid"
+    evidence:
+      source_type: "paper"
+      source_ref: "Structure module predicts 3D atomic coordinates."
+      confidence: "high"
+  - from: "structure-module"
+    to: "confidence"
+    meaning: "confidence estimation"
+    label: "quality estimates"
+    style: "solid"
+    evidence:
+      source_type: "paper"
+      source_ref: "AlphaFold outputs confidence estimates with structure predictions."
+      confidence: "high"
+
+visual_encoding:
+  proposed_method: "green accent fill and stronger border"
+  existing_components: "neutral fill"
+  feedback: "dashed arrow"
+  output: "warm accent fill"
+
+annotations:
+  equations: []
+  tensor_shapes: []
+  callouts:
+    - "Original reconstruction; not copied from the Nature figure."
+
+legend:
+  required: true
+  items:
+    - "Solid arrow: primary data / representation flow"
+    - "Dashed arrow: iterative refinement"
+    - "Green block: key representation reasoning module"
+
+caption:
+  draft: "Evidence-traceable reconstruction of the high-level AlphaFold architecture described by Jumper et al. (Nature, 2021). Sequence, MSA, and template information are transformed into learned MSA/pair representations, processed by Evoformer reasoning, refined through recycling, and converted into predicted 3D structure and confidence estimates. The SVG is an original educational reconstruction and does not reproduce the original paper figure."
+
+validation:
+  scientific_checks:
+    - "Nodes are limited to high-level components supported by the public method description."
+    - "The recycling feedback is marked as medium-confidence because this simplified figure abstracts implementation details."
+    - "No original figure layout, color scheme, or graphical assets are copied."
+  visual_checks:
+    - "Designed as a double-column SVG with editable text."
+    - "Core contribution is visually highlighted without implying that all components are novel."
+  unresolved_items:
+    - "This simplified educational example omits low-level attention equations, loss terms, and training data details."

@@ -12,6 +12,7 @@ source_evidence:
   equations: []
   algorithms: []
   code_files: []
+  notes: []
   unresolved_conflicts: []
 
 panels:
@@ -31,6 +32,10 @@ nodes:
     innovation: false
     training_only: false
     inference_only: false
+    evidence:
+      source_type: ""
+      source_ref: ""
+      confidence: "medium"
 
 edges:
   - from: "input-1"
@@ -38,6 +43,10 @@ edges:
     meaning: "data flow"
     label: ""
     style: "solid"
+    evidence:
+      source_type: ""
+      source_ref: ""
+      confidence: "medium"
 
 visual_encoding:
   proposed_method: "primary accent fill and stronger border"

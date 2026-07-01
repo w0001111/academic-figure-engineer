@@ -132,7 +132,7 @@ For code-based model figures, also identify:
 
 ### Step 4: Build a figure specification
 
-Before creating SVG, produce an internal or explicit figure specification based on `templates/figure-spec.yaml`.
+Before creating SVG, produce an internal or explicit figure specification based on `templates/figure-spec.yaml`. Use `references/evidence-traceability.md` to attach source evidence to major nodes and arrows.
 
 The specification must include:
 
@@ -150,7 +150,7 @@ The specification must include:
 - caption draft;
 - uncertainty or missing information.
 
-Do not create the final SVG until the specification is coherent.
+Do not create the final SVG until the specification is coherent and major nodes/arrows have evidence fields.
 
 ### Step 5: Decide what to omit
 

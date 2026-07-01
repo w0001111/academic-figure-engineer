@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Evidence-traceable AlphaFold architecture reconstruction</title>
+  <desc id="desc">Original SVG reconstruction showing high-level AlphaFold information flow from sequence, MSA, and templates through representations, Evoformer reasoning, recycling, structure prediction, and confidence outputs.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fbfbf8; }
+      .panel { fill: #ffffff; stroke: #d9d9d2; stroke-width: 2; rx: 26; }
+      .panel-title { font: 700 24px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #30343b; }
+      .node { fill: #f3f4f1; stroke: #6b7280; stroke-width: 2.2; rx: 18; }
+      .data { fill: #eef2f6; stroke: #64748b; }
+      .key { fill: #dcefdc; stroke: #2f7d50; stroke-width: 4; }
+      .process { fill: #f4f1ea; stroke: #736b5e; }
+      .output { fill: #f8e7c9; stroke: #a76b1f; }
+      .label { font: 700 22px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #1f2937; text-anchor: middle; }
+      .small { font: 500 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #4b5563; text-anchor: middle; }
+      .tag { font: 700 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #2f7d50; text-anchor: middle; }
+      .edge { fill: none; stroke: #374151; stroke-width: 3; marker-end: url(#arrow); }
+      .edge-dashed { fill: none; stroke: #2f7d50; stroke-width: 3; stroke-dasharray: 10 8; marker-end: url(#arrow-green); }
+      .edge-label { font: 600 14px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #374151; text-anchor: middle; }
+      .caption { font: 500 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #4b5563; }
+      .legend-title { font: 700 16px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: #374151; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#374151"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d50"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="900"/>
+  <text x="800" y="62" class="panel-title" text-anchor="middle">Original evidence-traceable reconstruction of AlphaFold high-level architecture</text>
+  <text x="800" y="92" class="caption" text-anchor="middle">Based on public method descriptions from Jumper et al., Nature 2021; not a reproduction of the original paper figure.</text>
+
+  <g id="panel-inputs">
+    <rect class="panel" x="70" y="145" width="330" height="570"/>
+    <text x="235" y="190" class="panel-title" text-anchor="middle">Inputs</text>
+    <g id="node-sequence">
+      <rect class="node data" x="125" y="245" width="220" height="95"/>
+      <text class="label" x="235" y="285"><tspan x="235" dy="0">Amino acid</tspan><tspan x="235" dy="28">sequence</tspan></text>
+      <text class="small" x="235" y="323">primary query</text>
+    </g>
+    <g id="node-msa">
+      <rect class="node data" x="125" y="390" width="220" height="95"/>
+      <text class="label" x="235" y="430"><tspan x="235" dy="0">Multiple sequence</tspan><tspan x="235" dy="28">alignment</tspan></text>
+      <text class="small" x="235" y="468">evolutionary signal</text>
+    </g>
+    <g id="node-templates">
+      <rect class="node data" x="125" y="535" width="220" height="95"/>
+      <text class="label" x="235" y="575"><tspan x="235" dy="0">Structural</tspan><tspan x="235" dy="28">templates</tspan></text>
+      <text class="small" x="235" y="613">when available</text>
+    </g>
+  </g>
+
+  <g id="panel-representation">
+    <rect class="panel" x="470" y="145" width="530" height="570"/>
+    <text x="735" y="190" class="panel-title" text-anchor="middle">Representation learning</text>
+    <g id="node-representations">
+      <rect class="node process" x="545" y="305" width="250" height="135"/>
+      <text class="label" x="670" y="355"><tspan x="670" dy="0">MSA + pair</tspan><tspan x="670" dy="30">representations</tspan></text>
+      <text class="small" x="670" y="408">sequence and geometry states</text>
+    </g>
+    <g id="node-evoformer">
+      <rect class="node key" x="690" y="500" width="240" height="125"/>
+      <text class="tag" x="810" y="528">Key reasoning module</text>
+      <text class="label" x="810" y="566"><tspan x="810" dy="0">Evoformer</tspan><tspan x="810" dy="30">reasoning block</tspan></text>
+      <text class="small" x="810" y="608">MSA ↔ pair exchange</text>
+    </g>
+  </g>
+
+  <g id="panel-structure">
+    <rect class="panel" x="1070" y="145" width="460" height="570"/>
+    <text x="1300" y="190" class="panel-title" text-anchor="middle">Structure prediction</text>
+    <g id="node-recycling">
+      <rect class="node process" x="1130" y="245" width="260" height="95"/>
+      <text class="label" x="1260" y="285"><tspan x="1260" dy="0">Recycling /</tspan><tspan x="1260" dy="28">iterative refinement</tspan></text>
+    </g>
+    <g id="node-structure-module">
+      <rect class="node process" x="1130" y="390" width="260" height="95"/>
+      <text class="label" x="1260" y="430"><tspan x="1260" dy="0">Structure</tspan><tspan x="1260" dy="28">module</tspan></text>
+      <text class="small" x="1260" y="468">coordinate prediction</text>
+    </g>
+    <g id="node-coordinates">
+      <rect class="node output" x="1105" y="545" width="190" height="95"/>
+      <text class="label" x="1200" y="583"><tspan x="1200" dy="0">Predicted 3D</tspan><tspan x="1200" dy="28">structure</tspan></text>
+    </g>
+    <g id="node-confidence">
+      <rect class="node output" x="1315" y="545" width="165" height="95"/>
+      <text class="label" x="1398" y="583"><tspan x="1398" dy="0">Confidence</tspan><tspan x="1398" dy="28">estimates</tspan></text>
+    </g>
+  </g>
+
+  <g id="edges-primary">
+    <path class="edge" d="M345 292 C420 292, 470 335, 545 352"/>
+    <text class="edge-label" x="438" y="286">sequence features</text>
+    <path class="edge" d="M345 438 C420 438, 470 394, 545 386"/>
+    <text class="edge-label" x="438" y="454">MSA features</text>
+    <path class="edge" d="M345 582 C455 582, 495 462, 545 410"/>
+    <text class="edge-label" x="438" y="574">template features</text>
+    <path class="edge" d="M795 395 C850 420, 870 462, 810 500"/>
+    <text class="edge-label" x="878" y="450">MSA / pair states</text>
+    <path class="edge" d="M930 560 C995 540, 1045 310, 1130 292"/>
+    <text class="edge-label" x="1040" y="405">refined states</text>
+    <path class="edge" d="M1260 340 L1260 390"/>
+    <text class="edge-label" x="1340" y="368">final representation</text>
+    <path class="edge" d="M1235 485 C1215 510, 1205 525, 1200 545"/>
+    <text class="edge-label" x="1168" y="520">3D coordinates</text>
+    <path class="edge" d="M1290 485 C1340 512, 1372 524, 1398 545"/>
+    <text class="edge-label" x="1400" y="520">quality estimates</text>
+  </g>
+
+  <g id="edge-recycling-feedback">
+    <path class="edge-dashed" d="M1130 272 C1035 220, 860 250, 815 500"/>
+    <text class="edge-label" x="960" y="245">recycled update</text>
+  </g>
+
+  <g id="legend" transform="translate(92 765)">
+    <text class="legend-title" x="0" y="0">Legend</text>
+    <line x1="0" y1="28" x2="70" y2="28" class="edge"/>
+    <text class="caption" x="92" y="33">Primary data / representation flow</text>
+    <line x1="395" y1="28" x2="465" y2="28" class="edge-dashed"/>
+    <text class="caption" x="488" y="33">Iterative refinement</text>
+    <rect x="810" y="10" width="34" height="28" class="node key"/>
+    <text class="caption" x="858" y="31">Highlighted reasoning module</text>
+  </g>
+
+  <text x="80" y="850" class="caption">Evidence note: node and edge provenance is documented in figure-spec.yaml. Low-level equations, losses, and original figure styling are intentionally omitted.</text>
+</svg>
