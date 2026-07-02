@@ -1,0 +1,231 @@
+figure:
+  title: "Evidence-traceable Aurora multimodal time-series foundation model reconstruction"
+  purpose: "Show how Aurora transforms time series, text, and endogenous image modalities into probabilistic future forecasts."
+  central_message: "Aurora extracts multimodal domain knowledge from text and image modalities, injects it into temporal representation learning, and uses prototype-guided flow matching for generative probabilistic forecasting."
+  audience: "machine learning and time-series forecasting researchers"
+  type: "model_architecture"
+  target_format: "double-column"
+  orientation: "left-to-right"
+  style_preset: "ICLR / IEEE-style compact model architecture"
+
+source_evidence:
+  manuscript_sections:
+    - "Abstract: multimodal inputs, zero-shot inference, tokenization, encoding, distillation, Modality-Guided Multi-head Self-Attention, Prototype-Guided Flow Matching"
+    - "Section 3.1 Encoding"
+    - "Section 3.1.1 Multimodal Tokenization"
+    - "Section 3.1.2 Token Distillation"
+    - "Section 3.1.3 Multimodal Alignment"
+    - "Section 3.2 Decoding"
+    - "Section 3.2.1 Condition Decoding"
+    - "Section 3.2.2 Prototype-Guided Flow Matching"
+  equations:
+    - "Equations (1)-(2): time-series patching and embedding"
+    - "Equations (3)-(7): endogenous image rendering and image tokenization"
+    - "Equations (8)-(11): vision/text encoding and token distillation"
+    - "Equations (12)-(18): modality-guided attention correlation and temporal encoding"
+    - "Equations (19)-(21): modality fusion"
+    - "Equations (22)-(25): condition decoding, prototype retrieval, and flow-matching objective"
+  algorithms:
+    - "Algorithm 1: Prototype-Guided Flow Matching"
+  code_files: []
+  notes:
+    - "This example uses text extracted from the user-provided PDF and does not reproduce original paper figures."
+  unresolved_conflicts: []
+
+panels:
+  - id: "panel-inputs"
+    label: "Multimodal inputs"
+    purpose: "Represent the three input modalities and tokenization paths."
+    zones: ["time series", "endogenous image", "text description"]
+  - id: "panel-encoder"
+    label: "Cross-modality encoder"
+    purpose: "Represent token distillation, modality-guided temporal attention, and fusion."
+    zones: ["pretrained encoders", "distillation", "guided attention", "fusion"]
+  - id: "panel-decoder"
+    label: "Generative decoder"
+    purpose: "Represent condition decoding, prototype retrieval, and flow matching."
+    zones: ["condition", "prototype", "flow matching", "forecast"]
+
+nodes:
+  - id: "time-series"
+    panel: "panel-inputs"
+    label: "Time series\nX"
+    type: "data"
+    level: "module"
+    description: "Raw univariate time-series input."
+    shape: "data_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "paper", source_ref: "Section 3.1.1; Equations (1)-(2)", confidence: "high" }
+  - id: "time-tokenization"
+    panel: "panel-inputs"
+    label: "RevIN + patching\n+ embedding"
+    type: "preprocessing"
+    level: "module"
+    description: "Produces time-series tokens."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "equation", source_ref: "Equations (1)-(2)", confidence: "high" }
+  - id: "image-rendering"
+    panel: "panel-inputs"
+    label: "Endogenous image\nrendering"
+    type: "preprocessing"
+    level: "module"
+    description: "Uses FFT-derived period, reshape, resize, image patching, and embedding."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "equation", source_ref: "Equations (3)-(7)", confidence: "high" }
+  - id: "text-tokenization"
+    panel: "panel-inputs"
+    label: "Text description\ntokenization"
+    type: "preprocessing"
+    level: "module"
+    description: "Obtains text tokens from vocabulary retrieval."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "paper", source_ref: "Section 3.1.1 text tokenization description", confidence: "high" }
+  - id: "vision-text-encoders"
+    panel: "panel-encoder"
+    label: "ViT / BERT\nencoders"
+    type: "model_module"
+    level: "module"
+    description: "Pretrained vision and text encoders produce hidden representations."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "equation", source_ref: "Equations (8)-(9)", confidence: "high" }
+  - id: "token-distillation"
+    panel: "panel-encoder"
+    label: "Token\ndistillation"
+    type: "model_module"
+    level: "module"
+    description: "Cross-attention-based distillers compress sparse image/text information."
+    shape: "highlight_block"
+    innovation: true
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "equation", source_ref: "Equations (10)-(11); Section 3.1.2", confidence: "high" }
+  - id: "guided-attention"
+    panel: "panel-encoder"
+    label: "Modality-guided\nself-attention"
+    type: "model_module"
+    level: "major_stage"
+    description: "Multimodal correlations guide temporal attention scores."
+    shape: "highlight_block"
+    innovation: true
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "equation", source_ref: "Equations (12)-(18); Section 3.1.3", confidence: "high" }
+  - id: "fusion"
+    panel: "panel-encoder"
+    label: "Cross-attention\nmodality fuser"
+    type: "model_module"
+    level: "module"
+    description: "Fuses temporal, image, and text representations into multimodal representations."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "equation", source_ref: "Equations (19)-(21)", confidence: "high" }
+  - id: "condition-decoder"
+    panel: "panel-decoder"
+    label: "Condition\ndecoder"
+    type: "model_module"
+    level: "module"
+    description: "Causal Transformer and Cross-Transformer produce future conditions."
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "equation", source_ref: "Equations (22)-(23); Section 3.2.1", confidence: "high" }
+  - id: "prototype-retriever"
+    panel: "panel-decoder"
+    label: "Prototype bank\n+ retriever"
+    type: "model_module"
+    level: "module"
+    description: "Retrieves period/trend prototypes from text and image representations."
+    shape: "highlight_block"
+    innovation: true
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "equation", source_ref: "Equation (24); Section 3.2.2", confidence: "high" }
+  - id: "flow-matching"
+    panel: "panel-decoder"
+    label: "Prototype-guided\nflow matching"
+    type: "generative_decoder"
+    level: "major_stage"
+    description: "Generates future tokens from prototype-based initial states and multimodal conditions."
+    shape: "highlight_block"
+    innovation: true
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "algorithm", source_ref: "Algorithm 1; Equation (25)", confidence: "high" }
+  - id: "forecast"
+    panel: "panel-decoder"
+    label: "Probabilistic\nforecast"
+    type: "output"
+    level: "major_stage"
+    description: "Predicted future horizon tokens / time-series forecasts."
+    shape: "output_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    evidence: { source_type: "paper", source_ref: "Abstract and Section 3.2.2 describe generative probabilistic forecasting", confidence: "high" }
+
+edges:
+  - { from: "time-series", to: "time-tokenization", meaning: "time-series tokenization", label: "raw series", style: "solid", evidence: { source_type: "equation", source_ref: "Equations (1)-(2)", confidence: "high" } }
+  - { from: "time-series", to: "image-rendering", meaning: "endogenous image construction", label: "FFT / period view", style: "solid", evidence: { source_type: "equation", source_ref: "Equations (3)-(7)", confidence: "high" } }
+  - { from: "image-rendering", to: "vision-text-encoders", meaning: "image encoding", label: "image tokens", style: "solid", evidence: { source_type: "equation", source_ref: "Equation (8)", confidence: "high" } }
+  - { from: "text-tokenization", to: "vision-text-encoders", meaning: "text encoding", label: "text tokens", style: "solid", evidence: { source_type: "equation", source_ref: "Equation (9)", confidence: "high" } }
+  - { from: "vision-text-encoders", to: "token-distillation", meaning: "compress image/text knowledge", label: "hidden reps", style: "solid", evidence: { source_type: "equation", source_ref: "Equations (10)-(11)", confidence: "high" } }
+  - { from: "time-tokenization", to: "guided-attention", meaning: "temporal tokens", label: "X_time", style: "solid", evidence: { source_type: "equation", source_ref: "Equations (15)-(18)", confidence: "high" } }
+  - { from: "token-distillation", to: "guided-attention", meaning: "domain-knowledge guidance", label: "Corr guidance", style: "solid", evidence: { source_type: "equation", source_ref: "Equations (12)-(16)", confidence: "high" } }
+  - { from: "guided-attention", to: "fusion", meaning: "temporal representation", label: "X_time", style: "solid", evidence: { source_type: "equation", source_ref: "Equation (18)", confidence: "high" } }
+  - { from: "token-distillation", to: "fusion", meaning: "image/text representation fusion", label: "distilled modalities", style: "solid", evidence: { source_type: "equation", source_ref: "Equations (19)-(21)", confidence: "high" } }
+  - { from: "fusion", to: "condition-decoder", meaning: "future condition generation", label: "X_fuse", style: "solid", evidence: { source_type: "equation", source_ref: "Equations (22)-(23)", confidence: "high" } }
+  - { from: "token-distillation", to: "prototype-retriever", meaning: "prototype retrieval from multimodal knowledge", label: "text/image reps", style: "solid", evidence: { source_type: "equation", source_ref: "Equation (24)", confidence: "high" } }
+  - { from: "condition-decoder", to: "flow-matching", meaning: "conditional generation", label: "future conditions", style: "solid", evidence: { source_type: "algorithm", source_ref: "Algorithm 1 uses condition X_cond_i", confidence: "high" } }
+  - { from: "prototype-retriever", to: "flow-matching", meaning: "prototype initial state", label: "period/trend prototypes", style: "solid", evidence: { source_type: "algorithm", source_ref: "Algorithm 1 and Section 3.2.2", confidence: "high" } }
+  - { from: "flow-matching", to: "forecast", meaning: "generative probabilistic forecasting", label: "sampled future tokens", style: "solid", evidence: { source_type: "paper", source_ref: "Section 3.2.2 inference phase and forecast concatenation", confidence: "high" } }
+
+visual_encoding:
+  proposed_method: "blue-green accent fill and stronger border"
+  existing_components: "neutral fill"
+  feedback: "dashed arrow"
+  output: "warm accent fill"
+
+annotations:
+  equations:
+    - "Corr = V_Attn W T_Attn^T"
+    - "X_fuse = X_time + X_image + X_text"
+    - "Prototype-guided flow matching objective in Eq. (25)"
+  tensor_shapes: []
+  callouts:
+    - "Original reconstruction based on supplied PDF; not copied from paper figures."
+
+legend:
+  required: true
+  items:
+    - "Solid arrow: data / representation flow"
+    - "Accent block: proposed Aurora component"
+    - "Warm block: forecast output"
+
+caption:
+  draft: "Evidence-traceable reconstruction of Aurora, a multimodal time series foundation model. Time-series, endogenous image, and text modalities are tokenized and encoded; image/text tokens are distilled into compact domain knowledge that guides temporal self-attention and multimodal fusion. The decoder generates future conditions and retrieves period/trend prototypes for prototype-guided flow matching, producing probabilistic forecasts."
+
+validation:
+  scientific_checks:
+    - "Each major node and edge is tied to abstract, Section 3.1, Section 3.2, equations, or Algorithm 1."
+    - "The figure separates encoding and decoding while avoiding reproduction of original paper figures."
+  visual_checks:
+    - "Designed as a compact double-column SVG with editable text."
+  unresolved_items:
+    - "Low-level implementation details, experimental benchmark results, and corpus construction details are omitted to keep the central architecture readable."
