@@ -26,3 +26,10 @@
 - Corpus construction and evaluation summary.
 - Low-level implementation details of each Transformer block.
 - Original paper figure layouts and styling.
+
+
+## 2026-07-02 visual simplification
+
+- The SVG was simplified from a dense full-method diagram into a two-layer architecture: domain-knowledge layer and temporal forecasting backbone, with a compact generative decoding band.
+- The scientific evidence specification was preserved; only the visual hierarchy and layout were simplified for readability.
+- The main visual message is now: text/image domain knowledge guides temporal modeling, while prototypes guide flow-matching generation.
