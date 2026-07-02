@@ -1,8 +1,7 @@
 ---
 name: academic-figure-engineer
-version: 1.0.0
 description: >
-  Analyze academic papers, method sections, code, equations, or rough research notes and turn them into publication-quality academic architecture diagrams using editable SVG. Use for model architecture figures, research framework diagrams, prediction-optimization-control pipelines, multi-timescale systems, traffic-energy coupling diagrams, algorithm workflows, graphical abstracts, and experiment framework figures. The skill must prioritize scientific correctness, readable information hierarchy, and editable vector output rather than decorative visuals.
+  Analyze academic papers, method sections, equations, code, or rough research notes and convert them into publication-quality academic figures using editable SVG. Use for model architecture figures, research frameworks, prediction-optimization-control pipelines, multi-timescale systems, traffic-energy coupling diagrams, algorithm workflows, graphical abstracts, and experiment validation figures. This skill must first reconstruct the scientific storyline, reduce information, assign hierarchy, select a figure type and layout template, produce a text skeleton and low-fidelity wireframe, attach evidence, and pass quality gates before generating final SVG.
 ---
 
 # Academic Figure Engineer
@@ -11,7 +10,7 @@ description: >
 
 Create scientifically accurate, publication-ready academic figures in editable SVG format.
 
-Do not begin by drawing. First reconstruct the scientific logic, decide what the figure must communicate, and then generate the diagram.
+Do not begin by drawing. First reconstruct the scientific logic, decide what the figure must communicate, reduce the information, choose a layout, and only then generate the diagram.
 
 The primary output is an editable `.svg` file. When useful, also provide:
 
@@ -136,10 +135,16 @@ Before creating SVG, produce an internal or explicit figure specification based 
 
 The specification must include:
 
+- figure question;
 - figure purpose;
+- central message;
 - intended audience;
 - figure type;
 - layout direction;
+- reading entry;
+- selected layout template;
+- must-show, may-show, and omitted information;
+- hierarchy levels;
 - panels or zones;
 - nodes;
 - edges;
@@ -156,6 +161,14 @@ Do not create the final SVG until the specification is coherent and major nodes/
 
 Remove details that do not help the figure's central message.
 
+Create three explicit lists:
+
+- must show: indispensable to understand the scientific logic;
+- may show: useful if space permits;
+- must omit: details that weaken the main story.
+
+Merge semantically related variables. For example, combine temperature, humidity, and wind speed as weather features instead of creating separate main-path blocks.
+
 Usually omit:
 
 - minor hyperparameters;
@@ -170,9 +183,19 @@ Usually omit:
 
 Move supporting details to the caption, legend, or manuscript text.
 
+Assign each retained item to one of three content hierarchy levels:
+
+1. major stage, subsystem, or dominant contribution;
+2. internal module or parallel branch;
+3. annotation, variable, tensor shape, formula, or badge.
+
+Level 3 items should usually not become standalone boxes.
+
 ### Step 6: Plan the layout
 
 Use a readable global structure.
+
+Choose one primary layout template from `references/layout-templates.md`. Do not invent a free-form layout unless all templates are unsuitable and the reason is explicit.
 
 Preferred patterns:
 
@@ -195,9 +218,20 @@ Avoid:
 - placing all modules at equal visual importance;
 - mixing physical devices, datasets, and algorithms without explicit grouping.
 
-### Step 7: Generate SVG
+### Step 7: Create a skeleton and wireframe
 
-Follow `references/svg-rules.md`.
+Before final SVG, produce:
+
+1. a text-only skeleton that is understandable without styling;
+2. a low-fidelity wireframe containing only zones, boxes, labels, arrows, and approximate proportions.
+
+The wireframe must establish the entry point, dominant reading path, grouping logic, main contribution, outputs, and any genuine feedback path.
+
+Do not add final colors, decorative icons, gradients, or detailed equations at wireframe stage.
+
+### Step 8: Generate SVG
+
+Follow `references/svg-rules.md` and `references/design-system.md`.
 
 Use semantic SVG groups and stable IDs. Prefer:
 
@@ -212,9 +246,9 @@ Use semantic SVG groups and stable IDs. Prefer:
 
 All primary text must remain real SVG text unless exact font embedding is explicitly required.
 
-### Step 8: Validate the diagram
+### Step 9: Validate the diagram
 
-Perform a scientific and visual audit before delivery. Use `references/final-quality-checklist.md` as the final gate before claiming publication readiness.
+Perform a scientific and visual audit before delivery. Use `references/quality-gates.md` for pre-SVG scientific and wireframe gates, then use `references/final-quality-checklist.md` as the final gate before claiming publication readiness.
 
 Scientific audit:
 
@@ -237,7 +271,17 @@ Visual audit:
 - Is the figure understandable without oral explanation?
 - Is the figure still readable at approximately 85 mm width for single-column or 175 mm width for double-column use?
 
-### Step 9: Deliver outputs
+Revise before final SVG if:
+
+- any scientific correctness gate fails;
+- the main path has more than about 5-9 major blocks without grouping;
+- there is more than one competing entry point;
+- the proposed contribution cannot be located quickly;
+- arrows cross unnecessarily;
+- labels require paragraph-length text;
+- the layout would become unreadable at the target paper width.
+
+### Step 10: Deliver outputs
 
 For bilingual Chinese-English projects, follow `references/bilingual-labeling.md` and keep terminology consistent across labels and captions.
 
@@ -254,12 +298,13 @@ When file generation is not available, provide the complete SVG source and the f
 
 ## Visual hierarchy rules
 
-Use no more than four semantic style levels:
+Use no more than three content hierarchy levels:
 
-1. figure or panel title;
-2. major stage or subsystem;
-3. method module;
-4. annotation or dimension label.
+1. primary storyline, major stage, or subsystem;
+2. secondary module, branch, or output;
+3. annotation, variable, tensor shape, formula, or badge.
+
+Figure and panel titles may sit outside this content hierarchy, but they should not introduce extra visual competition.
 
 Use a restrained semantic palette. A reasonable default is:
 
@@ -332,9 +377,11 @@ When asked to create a figure:
 2. state the central message of the figure;
 3. produce the figure specification;
 4. choose a figure type and journal style preset when relevant;
-5. generate the SVG in `outputs/academic_figures/` unless another path is requested;
-6. inspect and revise the result using the final quality checklist;
-7. provide the final files, caption, and unresolved assumptions.
+5. choose a layout template and create the skeleton and wireframe;
+6. run the scientific and visual quality gates;
+7. generate the SVG in `outputs/academic_figures/` unless another path is requested;
+8. inspect and revise the result using the final quality checklist;
+9. provide the final files, caption, and unresolved assumptions.
 
 When asked only for a design plan, stop after the specification and layout proposal.
 

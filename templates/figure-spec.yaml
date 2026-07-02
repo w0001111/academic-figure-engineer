@@ -1,11 +1,15 @@
 figure:
   title: ""
+  figure_question: "This figure should allow the reader to understand..."
   purpose: ""
   central_message: ""
   audience: "journal readers"
   type: "model_architecture"
   target_format: "double-column"
   orientation: "left-to-right"
+  reading_entry: "left"
+  layout_template: "T1-linear-scientific-pipeline"
+  style_preset: ""
 
 source_evidence:
   manuscript_sections: []
@@ -14,6 +18,26 @@ source_evidence:
   code_files: []
   notes: []
   unresolved_conflicts: []
+  assumptions: []
+
+scientific_storyline:
+  problem_context: ""
+  inputs: []
+  transformations: []
+  proposed_contribution: []
+  outputs: []
+  feedback_or_validation: []
+
+information_reduction:
+  must_show: []
+  may_show: []
+  must_omit: []
+  merged_concepts: []
+
+hierarchy:
+  level_1_major_stages: []
+  level_2_modules: []
+  level_3_annotations: []
 
 panels:
   - id: "panel-a"
@@ -24,14 +48,35 @@ panels:
 nodes:
   - id: "input-1"
     panel: "panel-a"
+    zone: "inputs"
     label: ""
     type: "data"
     level: "module"
+    hierarchy_level: 2
     description: ""
-    shape: ""
+    shape: "data_block"
     innovation: false
     training_only: false
     inference_only: false
+    visual_weight: "normal"
+    evidence:
+      source_type: ""
+      source_ref: ""
+      confidence: "medium"
+
+  - id: "module-1"
+    panel: "panel-a"
+    zone: "method"
+    label: ""
+    type: "model_module"
+    level: "major_stage"
+    hierarchy_level: 1
+    description: ""
+    shape: "process_block"
+    innovation: false
+    training_only: false
+    inference_only: false
+    visual_weight: "primary"
     evidence:
       source_type: ""
       source_ref: ""
@@ -43,28 +88,47 @@ edges:
     meaning: "data flow"
     label: ""
     style: "solid"
+    priority: "primary"
     evidence:
       source_type: ""
       source_ref: ""
       confidence: "medium"
 
 visual_encoding:
+  context: "neutral gray"
   proposed_method: "primary accent fill and stronger border"
   existing_components: "neutral fill"
+  supporting_mechanism: "light neutral fill"
   feedback: "dashed arrow"
   output: "secondary accent fill"
 
 annotations:
   equations: []
   tensor_shapes: []
+  variable_badges: []
   callouts: []
 
 legend:
   required: false
   items: []
 
+text_skeleton: ""
+
+wireframe_notes:
+  entry_point: ""
+  dominant_path: ""
+  grouping_logic: ""
+  expected_feedback_path: ""
+
 caption:
   draft: ""
+
+quality_gates:
+  scientific_logic: []
+  information_architecture: []
+  wireframe_clarity: []
+  final_rendering: []
+  unresolved_items: []
 
 validation:
   scientific_checks: []

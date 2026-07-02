@@ -59,8 +59,11 @@ outputs/academic_figures/
 
 ```text
 references/figure-types.md              # common academic figure types
+references/layout-templates.md          # fixed layout templates for common scientific structures
+references/design-system.md             # default canvas, typography, spacing, stroke, and palette rules
 references/svg-rules.md                 # SVG construction and editability rules
 references/journal-style-presets.md     # Nature/Science, Elsevier, IEEE, graphical abstract presets
+references/quality-gates.md             # pre-SVG scientific, information, and wireframe gates
 references/final-quality-checklist.md   # scientific + visual validation checklist
 references/evidence-traceability.md       # source tracking for nodes and arrows
 references/bilingual-labeling.md        # Chinese-English label and caption rules
@@ -73,9 +76,11 @@ templates/figure-spec.yaml              # reusable figure specification template
 examples/model-architecture/
 examples/traffic-energy-framework/
 examples/algorithm-workflow/
+examples/alphafold-nature-2021/
+examples/aurora-iclr-2026/
 ```
 
-Each example describes the input summary, central message, recommended figure type, layout, and cautions.
+The lightweight examples describe the input summary, central message, recommended figure type, layout, and cautions. The AlphaFold and Aurora examples include completed figure specifications, evidence notes, captions, SVG output, and HTML previews.
 
 ## Design principles
 
